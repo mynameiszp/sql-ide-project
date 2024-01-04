@@ -1,0 +1,53 @@
+@startuml Datalogical Diagram
+left to right direction
+entity DatabaseEntities{
+    *Id
+    --
+    *Name
+    *DateOfCreation
+    *DBType
+}
+entity SchemeEntities{
+    *Id
+    --
+    *Name
+    *Database
+}
+entity TableEntities{
+    *Id
+    --
+    *Name
+    *Scheme
+}
+entity ColumnEntities{
+    *Id
+    --
+    *Name
+    *Type
+    *Table
+}
+entity Data{
+    *Id
+    --
+    *Column
+    *Input
+    *Row_id
+}
+entity UserPreferences{
+    *Id
+    --
+    *Name
+    *PreferenceValue
+}
+entity KeyWords{
+    *Id
+    --
+    *Name
+}
+
+DatabaseEntities::Id ||--o{ SchemeEntities::Database
+SchemeEntities::Id ||--o{ TableEntities::Scheme
+TableEntities::Id ||--o{ ColumnEntities::Table
+ColumnEntities::Id ||--o{ Data::Column
+
+@enduml

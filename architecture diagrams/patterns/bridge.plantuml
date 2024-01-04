@@ -1,0 +1,18 @@
+@startuml ClassDiagram
+interface Importer{
+    +Import()
+}
+class DBAdder{
+    +Importer i
+    +ImportDB()
+}
+class SqlImporter{
+    +Import()
+}
+class CsvImporter{
+    +Import()
+}
+DBAdder --> Importer
+Importer <|-- SqlImporter
+Importer <|-- CsvImporter
+@enduml

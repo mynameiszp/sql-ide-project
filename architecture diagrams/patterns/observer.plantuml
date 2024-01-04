@@ -1,0 +1,23 @@
+@startuml ClassDiagram
+interface IAppCustomizer{
+    +Update()
+} 
+class AppCustomization{
+    +Subscribe(IAppCustomizer s)
+    +Unsubscribe(IAppCustomizer s)
+    +NotifyAll()
+}
+class AppFont{
+    +Update()
+}
+class AppTheme{
+    +Update()
+}
+class MainView{
+    +AppCustomization a
+}
+AppCustomization --> IAppCustomizer
+IAppCustomizer <|-- AppFont
+IAppCustomizer <|-- AppTheme
+MainView --> AppCustomization
+@enduml

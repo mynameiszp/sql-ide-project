@@ -1,0 +1,33 @@
+@startuml Use-case Diagram
+left to right direction
+actor User
+rectangle SQLIde{
+usecase "View element" as (View)
+usecase "Add element" as (Add)
+usecase "Delete element" as (Delete)
+usecase "Edit element" as (Edit)
+usecase "Export database" as (Export)
+usecase "Compare data schemes" as (Compare)
+usecase "Run SQL Query" as (Run)
+usecase "Change IDE color style" as (ChangeStyle)
+usecase "Customize font settings" as (ChangeFont)
+usecase "Open terminal" as (Ternimal)
+usecase "Import element" as (Import)
+usecase "Create element" as (Create)
+}
+
+User --> Add
+User --> Run
+User --> Compare
+User --> View
+User --> Delete
+User --> Edit
+User --> Export
+User --> ChangeStyle
+User --> ChangeFont
+User --> Ternimal
+
+Add <|-- Import
+Add <|-- Create
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+' left to right direction
+interface "Repository" as Repository
+' component UserInterface as View
+component Application{
+    component SQL_IDE
+    component LocalFiles
+    component DBLibraries
+}
+component Database{
+    component "SQLIdeContext" as Context
+    component Sql.Data
+    component DBServer
+}
+Sql.Data --> Context
+Context --> DBServer
+SQL_IDE - Repository
+Repository - Sql.Data
+SQL_IDE --> LocalFiles
+SQL_IDE --> DBLibraries
+@enduml

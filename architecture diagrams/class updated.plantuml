@@ -1,0 +1,196 @@
+@startuml Class Diagram
+interface IDatabaseEntitiesRepository{
+    +GetDatabases()
+    +GetDatabaseByID()
+    +InsertDatabase()
+    +DeleteDatabase()
+    +UpdateDatabase()
+    +Save()
+}
+interface ISchemeEntitiesRepository{
+    +GetSchemes()
+    +GetSchemeByID()
+    +InsertScheme()
+    +DeleteScheme()
+    +UpdateScheme()
+    +Save()
+}
+interface ITableEntitiesRepository{
+    +GetTables()
+    +GetTableByID()
+    +InsertTable()
+    +DeleteTable()
+    +UpdateTable()
+    +Save()
+}
+interface IColumnEntitiesRepository{
+    +GetColumns()
+    +GetColumnByID()
+    +InsertColumn()
+    +DeleteColumn()
+    +UpdateColumn()
+    +Save()
+}
+interface IDataRepository{
+    +GetData()
+    +GetDataById()
+    +InsertData()
+    +DeleteData()
+    +UpdateData()
+    +Save()
+}
+interface IKeyWordsRepository{
+    +GetKeyWords()
+    +GetKeyWordByID()
+    +InsertKeyWord()
+    +DeleteKeyWord()
+    +UpdateKeyWord()
+    +Save()
+}
+interface IUserPreferencesRepository{
+    +GetUserPreferences()
+    +GetUserPreferenceByID()
+    +InsertUserPreference()
+    +DeleteUserPreference()
+    +UpdateUserPreference()
+    +Save()
+}
+class DatabaseEntitiesRepository
+class SchemeEntitiesRepository
+class TableEntitiesRepository
+class ColumnEntitiesRepository
+class DataRepository
+class KeyWordsRepository
+class UserPreferencesRepository
+class SqlDataContext{
+    +Databases
+    +Schemes
+    +Tables
+    +Columns
+    +Data
+    +UserPreferences
+    +KeyWords
+}
+class DatabaseEntityService{
+    +GetDatabaseEntitiesList()
+    +AddToDatabaseEntitiesList()
+    +GetDatabase()
+    +GetDatabaseByName()
+    +UpdateDatabase()
+    +DeleteDatabase()
+}
+class SchemeEntityService{
+    +GetSchemeEntitiesList()
+    +AddToSchemeEntitiesList()
+    +GetScheme()
+    +GetSchemeByName()
+    +UpdateScheme()
+    +DeleteScheme()
+}
+class TableEntityService{
+    +GetTableEntitiesList()
+    +AddToTableEntitiesList()
+    +GetTable()
+    +GetTableByName()
+    +UpdateTable()
+    +DeleteTable()
+}
+class ColumnEntityService{
+    +GetColumnEntitiesList()
+    +AddToColumnEntitiesList()
+    +GetColumn()
+    +GetColumnByName()
+    +UpdateColumn()
+    +DeleteColumn()
+}
+class DataService{
+    +GetDataList()
+    +AddToDataList()
+    +GetData()
+    +GetDataByName()
+    +UpdateData()
+    +DeleteData()
+}
+class KeyWordService{
+    +GetKeyWordsList()
+    +AddToKeyWordsList()
+    +GetKeyWord()
+    +GetKeyWordByName()
+    +UpdateKeyWord()
+    +DeleteKeyWord()
+}
+class UserPreferenceService{
+    +GetUserPreferencesList()
+    +AddToUserPreferencesList()
+    +GetUserPreference()
+    +GetUserPreferenceByName()
+    +UpdateUserPreference()
+    +DeleteUserPreference()
+}
+
+class DatabaseEntitiesViewModel{
+    +Databases
+}
+class SchemeEntitiesViewModel{
+    +Schemes
+}
+class TableEntitiesViewModel{
+    +Tables
+}
+class ColumnEntitiesViewModel{
+    +Columns
+}
+class DataEntitiesViewModel{
+    +Data
+}
+class KeyWordsViewModel{
+    +KeyWords
+}
+class UserPreferencesViewModel{
+    +UserPreferences
+}
+
+DatabaseEntitiesViewModel --> DatabaseEntityService
+DatabaseEntityService --> IDatabaseEntitiesRepository
+SchemeEntitiesViewModel --> SchemeEntityService
+SchemeEntityService --> ISchemeEntitiesRepository
+TableEntitiesViewModel --> TableEntityService
+TableEntityService --> ITableEntitiesRepository
+ColumnEntitiesViewModel --> ColumnEntityService
+ColumnEntityService --> IColumnEntitiesRepository
+DataEntitiesViewModel --> DataService
+DataService --> IDataRepository
+KeyWordsViewModel --> KeyWordService
+KeyWordService --> IKeyWordsRepository
+UserPreferencesViewModel --> UserPreferenceService
+UserPreferenceService --> IUserPreferencesRepository
+
+IDatabaseEntitiesRepository <|-- DatabaseEntitiesRepository
+ISchemeEntitiesRepository <|-- SchemeEntitiesRepository
+ITableEntitiesRepository <|-- TableEntitiesRepository
+IColumnEntitiesRepository <|-- ColumnEntitiesRepository
+IDataRepository <|-- DataRepository
+IKeyWordsRepository <|-- KeyWordsRepository
+IUserPreferencesRepository <|-- UserPreferencesRepository
+
+DatabaseEntitiesRepository --> SqlDataContext
+SchemeEntitiesRepository --> SqlDataContext
+TableEntitiesRepository --> SqlDataContext
+ColumnEntitiesRepository --> SqlDataContext
+DataRepository --> SqlDataContext
+KeyWordsRepository --> SqlDataContext
+UserPreferencesRepository --> SqlDataContext
+
+class SqlHighlighter{
+    +Highlight()
+}
+interface IAppCustomizer{
+    +Update()
+}
+class SchemeComparator{
+    +Compare()
+}
+SqlHighlighter --> KeyWordService
+IAppCustomizer --> UserPreferenceService
+SchemeComparator --> SchemeEntityService
+@enduml

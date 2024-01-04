@@ -1,0 +1,21 @@
+@startuml State Diagram
+state Waiting{
+
+}
+[*] --> Waiting
+state Execution {
+    state "Waiting for changes in query" as WaitingChanges
+    state "Highlighting key word" as Highlighting
+    state "Analyzing query" as Analyzing
+    state "Running query" as Running
+    [*] --> WaitingChanges
+    WaitingChanges --> Analyzing: Text changed
+    Analyzing --> Highlighting: Text analyzed
+    Highlighting --> WaitingChanges: Key words highlighted
+    WaitingChanges --> Running: Pressed "Run"
+    Running --> Waiting: Result is displayed
+}
+Waiting --> Execution: Started entering query
+Execution --> [*]: Application closed
+Waiting --> [*]: Application closed
+@enduml

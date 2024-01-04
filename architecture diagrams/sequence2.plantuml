@@ -1,0 +1,17 @@
+@startuml
+actor User as User
+participant UserInterface as UI
+participant PreferenceController
+participant ColorStyleSettings
+participant UserPreferencesRepository
+participant DBServer
+User -> UI: change ide color style
+UI -> PreferenceController: Change()
+PreferenceController -> ColorStyleSettings: SetColorStyle()
+ColorStyleSettings -> UserPreferencesRepository: send request (update color style)
+UserPreferencesRepository -> DBServer: process request (update color style)
+UserPreferencesRepository <-- DBServer: updated color style
+ColorStyleSettings <-- UserPreferencesRepository: updated color style
+PreferenceController <-- ColorStyleSettings: color style is set
+UI <-- PreferenceController: display changes
+@enduml

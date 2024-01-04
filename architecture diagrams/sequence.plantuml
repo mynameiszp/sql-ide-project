@@ -1,0 +1,14 @@
+@startuml
+actor User as User
+participant UserInterface as UI
+participant Controller
+participant LocalFiles
+participant DBServer
+User -> UI: launch .exe
+UI -> Controller: initialize
+Controller -> LocalFiles: request user preferences
+Controller <-- LocalFiles: provide user preferences
+Controller -> DBServer: request database connection
+Controller <-- DBServer: provide database connection
+UI <-- Controller: initialized
+@enduml

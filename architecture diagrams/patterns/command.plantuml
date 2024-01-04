@@ -1,0 +1,29 @@
+@startuml ClassDiagram
+class CommandHistory{
+    +List<ICommander>
+    +push(ICommander c)
+    +pop()
+}
+class QueryDefiner{
+    +ICommander c
+    +RunCommand()
+}
+interface ICommander{
+    +Execute()
+}
+class CopyCommand{
+    Execute()
+}
+class PasteCommand{
+    Execute()
+}
+class UndoCommand{
+    Execute()
+}
+CommandHistory --> ICommander
+QueryDefiner --> ICommander
+ICommander <|-- CopyCommand
+ICommander <|-- PasteCommand
+ICommander <|-- UndoCommand
+UndoCommand --> CommandHistory
+@enduml

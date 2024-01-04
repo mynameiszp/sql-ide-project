@@ -1,0 +1,37 @@
+@startuml ClassDiagram
+interface Visitor{
+    +VisitDatabase(DatabaseEntity d)
+    +VisitScheme(SchemeEntity s)
+    +VisitData(Datas data)
+    +GetResult()
+}
+interface Exporting{
+    +Accept(Visitor v)
+}
+class DatabaseExporter{
+    +VisitDatabase(DatabaseEntity d)
+    +VisitScheme(SchemeEntity s)
+    +VisitData(Datas data)
+    +GetResult()
+}
+class Exporter{
+    +List<Exporting>
+    +Visitor v
+}
+class DatabaseEntity{
+    +Accept(Visitor v)
+}
+class SchemeEntity{
+    +Accept(Visitor v)
+}
+class Datas{
+    +Accept(Visitor v)
+}
+Exporting --> Visitor
+Visitor <|-- DatabaseExporter
+Exporter --> Exporting
+Exporter --> Visitor
+Exporting <|-- DatabaseEntity
+Exporting <|-- SchemeEntity
+Exporting <|-- Datas
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+top to bottom direction
+node DBServer{
+    database PostgreSQL
+}
+node UserPC{
+    artifact ide.exe
+    file userPreferences
+    folder userData
+}
+
+UserPC -- DBServer 
+@enduml
